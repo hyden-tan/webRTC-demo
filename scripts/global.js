@@ -10,10 +10,18 @@ window.global = {
 function setName() {
     var name = document.getElementById('nameInput').value;
 
-    if (global.myName) {
-        global.socket.send({
+    if (name) {
+        global.socket.send(JSON.stringify({
             type: 'set-name',
             name: name,
-        });
+        }));
+    }
+}
+
+function hangUp() {
+    var callee = document.getElementById('friendsSelect').value;
+
+    if (callee) {
+        
     }
 }
