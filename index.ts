@@ -2,9 +2,9 @@ import Koa from 'koa';
 import publicDir from './middlewares/public';
 import render from './lib/render';
 import router from './route';
-import socket from './websocket';
+import SinalServer from './sinal-server';
 
-const useSocket = socket;
+new SinalServer();
 
 const app = new Koa();
 
