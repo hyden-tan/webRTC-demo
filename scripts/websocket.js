@@ -1,4 +1,4 @@
-global.socket = new WebSocket('ws://192.168.1.23:8080');
+global.socket = new WebSocket('ws://by.xinoa.cc:1234');
 global.socket.addEventListener('open', createPeerConnection);
 global.socket.addEventListener('message', receiveMessage);
 global.socket.addEventListener('close', socketClose);
