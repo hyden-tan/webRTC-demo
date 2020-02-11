@@ -1,10 +1,10 @@
-const fs = require('fs');
-const path = require('path');
+import fs from 'fs';
+import path from 'path';
 
 const fsPromises = fs.promises;
 const root = process.cwd();
 
-module.exports = (publicPath) => async (ctx, next) => {
+export default (publicPath: string) => async (ctx: any, next: any) => {
     if (ctx.path.indexOf(publicPath) === 1) {
         if (/.css$/.test(ctx.path)) {
             ctx.type = 'text/css';

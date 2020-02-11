@@ -1,9 +1,9 @@
-const ws = require('ws');
+import ws from 'ws';
 
-module.exports = class SinalServer {
-  socket;
+export default class SinalServer {
+  socket: ws.Server;
 
-  socketPool = [];
+  socketPool: any[] = [];
 
   constructor() {
     this.socket = new ws.Server({
@@ -14,18 +14,18 @@ module.exports = class SinalServer {
     this.socket.on('connection', this.handleConnection);
   }
 
-  handleConnection = (clientSocket) => {
+  handleConnection = (clientSocket: any) => {
     if (this.socketPool.findIndex((item) => item.ws === clientSocket) === -1) {
       this.socketPool.push({ ws: clientSocket, name: '' });
     }
 
-    clientSocket.on('message', (data) => {
+    clientSocket.on('message', (data: any) => {
       this.onMessage(JSON.parse(data), clientSocket);
     });
     clientSocket.send('connected');
   }
 
-  onMessage = (data, client) => {
+  onMessage = (data: any, client: any) => {
     switch(data.type) {
         case 'set-name': 
             this.setName(data.name, client);
@@ -35,7 +35,7 @@ module.exports = class SinalServer {
     } 
   }
 
-  setName = (name, client) => {
+  setName = (name: string, client: any) => {
     if (!name) {
         client.send(JSON.stringify({ type: 'set-name-faild', msg: '姓名为空！' }));
         return;
@@ -67,7 +67,7 @@ module.exports = class SinalServer {
     }
   }
 
-  exchangeSinal = (data) => {
+  exchangeSinal = (data: any) => {
     this.socketPool.forEach((item) => {
         if (item.name === data.targetUserName) {
           item.ws.send(JSON.stringify(data));
