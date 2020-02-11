@@ -8,8 +8,8 @@ module.exports = class SinalServer {
   constructor() {
     this.socket = new ws.Server({
       host: '0.0.0.0',
-      port: 1234,
-    }, () => console.log(`ws://0.0.0.0:1234 worked`));
+      port: 8080,
+    }, () => console.log(`ws://0.0.0.0:8080 worked`));
 
     this.socket.on('connection', this.handleConnection);
   }
