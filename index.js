@@ -9,7 +9,7 @@ new SinalServer();
 const app = new Koa();
 
 app.use(publicDir('style'));
-app.use(publicDir('scripts'))
+app.use(publicDir('webrtc-share'))
 
 app.use(render);
 app.use(routers.routes());

@@ -1,4 +1,4 @@
-const SIGNAL_SERVER_WS_URL = 'ws://0.0.0.0:8080';
+const SIGNAL_SERVER_WS_URL = 'ws://39.102.36.224:8080';
 
 window.global = {
     myName: '',
