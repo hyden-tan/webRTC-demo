@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>首页</title>
+</head>
+<style>
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
+.header {
+    width: 300px;
+    padding: 20px;
+    padding-bottom: 0;
+}
+
+.header .field {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    vertical-align: middle;
+    margin-bottom: 10px;
+}
+
+.header .field select {
+    width: 200px;
+    height: 24px;
+}
+
+
+.container {
+    margin-top: 50px;
+    display: flex;
+    justify-content: space-around;
+}
+
+.container .video {
+    width: 500px;
+    height: 300px;
+    border: 1px solid gray;
+}
+</style>
+<body>
+    <div class="header">
+        <div class="field" id="nameDiv" style="display: block">
+            <input id="nameInput" type="text">
+            <button onclick="setName()">设置</button>
+        </div>
+        <p>YourName: <span id="name"></span></p>
+        <div class="field">
+            <select id="friendsSelect" placeholder="Select Friends" onChange="selectFriend()"></select>
+            <button onclick="startCall()">呼叫</button>
+        </div>
+    </div>
+    <div class="container">
+        <div class="video">
+            <video id="video-local" autoplay width="300" height="200"></video>
+        </div>
+        <div class="video">
+            <video id="video-remote" autoplay width="300" height="200"></video>
+        </div>
+    </div>
+    <script type="text/javascript" src="/webrtc-share/index.js"></script>
+</body>
+</html>
