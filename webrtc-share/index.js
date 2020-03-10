@@ -35,7 +35,7 @@ class Call {
 
     createPeerConnection = () => {
         this.peerConnection = new RTCPeerConnection({
-            // iceServers: [{ urls: 'turn:' + global.host, username: 'webrtc', credential: 'turnserver' }],
+            iceServers: [{ urls: 'stun:stun.stunprotocol.org' }],
         });
 
         /**
@@ -77,7 +77,6 @@ class Call {
     }
 
     handleVideoOfferMsg = (msg) => {
-      console.log('receiveOffser');
     
       global.targetUserName = msg.name;
       this.createPeerConnection();
@@ -117,9 +116,7 @@ class Call {
     }
 
     handleNewICECandidateMsg = (msg) => {
-      const candidate = new RTCIceCandidate({
-        ...msg.candidate,
-      });
+      const candidate = new RTCIceCandidate(msg.candidate);
     
       this.peerConnection.addIceCandidate(candidate)
         .catch(console.log);
