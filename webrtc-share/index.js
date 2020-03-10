@@ -25,7 +25,7 @@ class Call {
     }
 
     getUserMedia = () => {
-        navigator.mediaDevices.getUserMedia({ audio: false, video: true })
+        navigator.mediaDevices.getUserMedia({ audio: true, video: true })
             .then((localStream) => {
                 document.getElementById("video-local").srcObject = localStream;
                 this.peerConnection.addStream(localStream);
@@ -79,7 +79,7 @@ class Call {
       const desc = new RTCSessionDescription(msg.sdp);
     
       this.peerConnection.setRemoteDescription(desc).then(function () {
-        return navigator.mediaDevices.getUserMedia({ audio: true, video: false });
+        return navigator.mediaDevices.getUserMedia({ audio: true, video: true });
       })
       .then((stream) => {
         localStream = stream;
