@@ -113,11 +113,10 @@ class Call {
     }
 
     handleVideoAnswerMsg = (msg) => {
-      this.peerConnection.setRemoteDescription(new RTCSessionDescription(msg.sdp)).catch(reportError);
+      this.peerConnection.setRemoteDescription(new RTCSessionDescription(msg.sdp)).catch(console.log);
     }
 
     handleNewICECandidateMsg = (msg) => {
-      console.log('receiveIce');
       const candidate = new RTCIceCandidate({
         ...msg.candidate,
       });
