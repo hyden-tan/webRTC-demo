@@ -64,6 +64,10 @@ class Call {
             });
           }
         };
+
+        this.peerConnection.ontrack = (event) => {
+          document.getElementById("video-remote").srcObject = event.stream;
+        }
     }
 
     setLocalDescription = (offer) => {
