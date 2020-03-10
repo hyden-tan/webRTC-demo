@@ -92,7 +92,7 @@ class Call {
         document.getElementById("video-local").srcObject = stream;
         this.peerConnection.addStream(stream);
     
-        // localStream.getTracks().forEach(track => this.peerConnection.addTrack(track, localStream));
+        stream.getTracks().forEach(track => this.peerConnection.addTrack(track, localStream));
       })
       .then(() => {
         console.log('create ansser');
