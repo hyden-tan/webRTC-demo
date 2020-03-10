@@ -68,7 +68,7 @@ class Call {
         };
 
         this.peerConnection.ontrack = (event) => {
-          document.getElementById("video-remote").srcObject = event.stream;
+          document.getElementById("video-remote").srcObject = event.streams[0];
         }
     }
 
