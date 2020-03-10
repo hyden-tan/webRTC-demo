@@ -27,7 +27,7 @@ class Call {
     getUserMedia = () => {
         navigator.mediaDevices.getUserMedia({ audio: true, video: true })
             .then((localStream) => {
-                document.getElementById("video-local").srcObject = localStream;
+                // document.getElementById("video-local").srcObject = localStream;
                 this.peerConnection.addStream(localStream);
             })
             .catch((error) => console.log(error));
@@ -88,7 +88,7 @@ class Call {
       })
       .then((stream) => {
         console.log('add localstream');
-        document.getElementById("video-local").srcObject = stream;
+        // document.getElementById("video-local").srcObject = stream;
         // this.peerConnection.addStream(stream);
     
         stream.getTracks().forEach(track => this.peerConnection.addTrack(track, stream));
