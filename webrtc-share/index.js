@@ -136,6 +136,7 @@ class SignalClient {
     onMessage = (msgEvent) => {
       try {
         const msg = JSON.parse(msgEvent.data);
+        console.log(msgEvent.data);
         switch (msg.type) {
 
           case 'video-offer':
