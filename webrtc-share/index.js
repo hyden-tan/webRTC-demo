@@ -123,7 +123,7 @@ class Call {
       });
     
       this.peerConnection.addIceCandidate(candidate)
-        .catch(reportError);
+        .catch(console.log);
     }
 }
 
