@@ -148,8 +148,7 @@ class SignalClient {
     
           case 'new-ice-candidate':
             this.onNewICECandidateMsg(msg);
-
-
+            break;
           case 'set-name': 
             setNameResult(msg);
             break;
