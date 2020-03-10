@@ -59,7 +59,7 @@ class Call {
           if (event.candidate) {
             this.signalClient.sendMsg({
               type: "new-ice-candidate",
-              target: global.targetUserName,
+              targetUserName: global.targetUserName,
               candidate: event.candidate
             });
           }
