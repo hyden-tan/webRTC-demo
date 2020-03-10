@@ -66,6 +66,7 @@ class Call {
         };
 
         this.peerConnection.ontrack = (event) => {
+          console.log('ontack');
           document.getElementById("video-remote").srcObject = event.stream;
         }
     }
