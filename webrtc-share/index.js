@@ -64,7 +64,7 @@ class Call {
                 candidate: event.candidate
               });
             }
-          }, 3000);          
+          }, 2000);          
         };
 
         this.peerConnection.ontrack = (event) => {
@@ -77,7 +77,7 @@ class Call {
     }
 
     handleVideoOfferMsg = (msg) => {
-      let localStream = null;
+      console.log('receiveOffser');
     
       global.targetUserName = msg.name;
       this.createPeerConnection();
@@ -88,13 +88,14 @@ class Call {
         return navigator.mediaDevices.getUserMedia({ audio: true, video: true });
       })
       .then((stream) => {
-        localStream = stream;
-        document.getElementById("video-local").srcObject = localStream;
-        this.peerConnection.addStream(localStream);
+        console.log('add localstream');
+        document.getElementById("video-local").srcObject = stream;
+        this.peerConnection.addStream(stream);
     
         // localStream.getTracks().forEach(track => this.peerConnection.addTrack(track, localStream));
       })
       .then(() => {
+        console.log('create ansser');
         return this.peerConnection.createAnswer();
       })
       .then((answer) => {
@@ -116,6 +117,7 @@ class Call {
     }
 
     handleNewICECandidateMsg = (msg) => {
+      console.log('receiveIce');
       const candidate = new RTCIceCandidate({
         ...msg.candidate,
       });
@@ -140,7 +142,6 @@ class SignalClient {
     onMessage = (msgEvent) => {
       try {
         const msg = JSON.parse(msgEvent.data);
-        console.log(msgEvent.data);
         switch (msg.type) {
 
           case 'video-offer':
