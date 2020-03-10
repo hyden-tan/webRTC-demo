@@ -56,13 +56,15 @@ class Call {
          * 当需要你通过信令服务器将一个ICE候选发送给另一个对等端时
          */
         this.peerConnection.onicecandidate = (event) => {
-          if (event.candidate) {
-            this.signalClient.sendMsg({
-              type: "new-ice-candidate",
-              targetUserName: global.targetUserName,
-              candidate: event.candidate
-            });
-          }
+          setTimeout(() => {
+            if (event.candidate) {
+              this.signalClient.sendMsg({
+                type: "new-ice-candidate",
+                targetUserName: global.targetUserName,
+                candidate: event.candidate
+              });
+            }
+          }, 3000);          
         };
 
         this.peerConnection.ontrack = (event) => {
