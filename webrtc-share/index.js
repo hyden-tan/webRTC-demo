@@ -90,8 +90,9 @@ class Call {
       .then((stream) => {
         localStream = stream;
         document.getElementById("video-local").srcObject = localStream;
+        this.peerConnection.addStream(localStream);
     
-        localStream.getTracks().forEach(track => this.peerConnection.addTrack(track, localStream));
+        // localStream.getTracks().forEach(track => this.peerConnection.addTrack(track, localStream));
       })
       .then(() => {
         return this.peerConnection.createAnswer();
@@ -115,7 +116,6 @@ class Call {
     }
 
     handleNewICECandidateMsg = (msg) => {
-      console.log(msg);
       const candidate = new RTCIceCandidate({
         ...msg.candidate,
       });
