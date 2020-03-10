@@ -66,7 +66,6 @@ class Call {
         };
 
         this.peerConnection.ontrack = (event) => {
-          console.log('ontack');
           document.getElementById("video-remote").srcObject = event.stream;
         }
     }
@@ -114,7 +113,8 @@ class Call {
     }
 
     handleNewICECandidateMsg = (msg) => {
-      const candidate = new RTCIceCandidate(msg.candidate);
+      console.log(msg);
+      const candidate = new RTCIceCandidate(msg.candidate.candidate);
     
       this.peerConnection.addIceCandidate(candidate)
         .catch(reportError);
