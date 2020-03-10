@@ -114,7 +114,9 @@ class Call {
 
     handleNewICECandidateMsg = (msg) => {
       console.log(msg);
-      const candidate = new RTCIceCandidate(msg.candidate.candidate);
+      const candidate = new RTCIceCandidate({
+        ...msg.candidate,
+      });
     
       this.peerConnection.addIceCandidate(candidate)
         .catch(reportError);
