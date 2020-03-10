@@ -89,7 +89,6 @@ class Call {
       .then((stream) => {
         console.log('add localstream');
         document.getElementById("video-local").srcObject = stream;
-        // this.peerConnection.addStream(stream);
     
         stream.getTracks().forEach(track => this.peerConnection.addTrack(track, stream));
       })
@@ -166,6 +165,7 @@ class SignalClient {
     }
 
     sendMsg(message) {
+      console.log('send', message);
         this.socket.send(JSON.stringify(message));
     }
 
@@ -190,7 +190,7 @@ function setName() {
 
 function setNameResult(data) {
   if (!data.success) {
-      alert(data.msg);
+      alert(data.msg + 'aaa');
   } else {
       global.myName = data.name;
       document.getElementById('name').innerHTML = global.myName;
