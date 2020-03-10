@@ -81,7 +81,7 @@ class Call {
       global.targetUserName = msg.name;
       this.createPeerConnection();
     
-      const desc = new RTCSessionDescription(msg.sdp);
+      const desc = new RTCSessionDescription(msg.sdp.sdp);
     
       this.peerConnection.setRemoteDescription(desc).then(function () {
         return navigator.mediaDevices.getUserMedia({ audio: true, video: true });
@@ -110,7 +110,7 @@ class Call {
     }
 
     handleVideoAnswerMsg = (msg) => {
-      this.peerConnection.setRemoteDescription(new RTCSessionDescription(msg.sdp)).catch(reportError);
+      this.peerConnection.setRemoteDescription(new RTCSessionDescription(msg.sdp.sdp)).catch(reportError);
     }
 
     handleNewICECandidateMsg = (msg) => {
